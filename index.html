@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="forms">
+      <div class="form__container">
+        <div class="form__wrap">
+          <form class="form" action="">
+            <div class="input">
+              <label for="username"> Ism kiriting </label>
+              <input type="text" id="username" placeholder="Ism kiriting..." />
+            </div>
+            <div class="input">
+              <label for="usersurname"> Familiangizni kiriting </label>
+              <input
+                type="text"
+                id="usersurname"
+                placeholder="Familiangizni kiriting..."
+              />
+            </div>
+            <div class="input">
+              <label for="useremail"> E-mail kiriting </label>
+              <input
+                type="text"
+                id="useremail"
+                class="useremail"
+                placeholder="E-mail kiriting..."
+              />
+              <p class="userEmailErr"></p>
+            </div>
+            <div class="input">
+              <label for="userpassword"> Parol kiriting </label>
+              <input
+                type="text"
+                id="userpassword"
+                placeholder="Parol kiriting..."
+              />
+              <p class="userpasswordErr"></p>
+            </div>
+            <div class="input">
+              <label for="userpassword2"> Parolni qayta kiriting </label>
+              <input
+                type="text"
+                id="userpassword2"
+                placeholder="Parolni qayta kiriting..."
+              />
+            </div>
+            <p class="userpasswordErr2"></p>
+            <div class="btn__container">
+              <button class="form__btn" onclick="submitted(event)">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
