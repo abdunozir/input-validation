@@ -34,70 +34,30 @@ const userpassword = document.querySelector('#userpassword');
 const userpasswordErr = document.querySelector('.userpasswordErr');
 
 userpassword.addEventListener('keyup', (e) => {
-  try {
-    let el = e.target.value;
-    if (el.length >= 6) {
-      parolniTekshir(el);
-    } else if (0 < el.length < 6) {
-      userpassword.style.borderColor = 'red';
-      userpasswordErr.innerHTML = "Kamida 6 ta belgidaniborat bo'lsin";
+  if (e.target.value.length > 6) {
+    userpasswordErr.classList.remove('isvalid1');
+
+    if (!e.target.value.match(/[A-Z]/)) {
+      userpasswordErr.innerHTML = 'kATTA harfdan foydalaning';
+      userpassword.style.borderColor = ' red';
+    } else if (!e.target.value.match(/[a-z]/)) {
+      userpasswordErr.innerHTML = 'kichik harfdan foydalaning';
+      userpassword.style.borderColor = ' red';
+    } else if (!e.target.value.match(/[!@#\$%.:;'"/?,<>}{`}]/)) {
+      userpasswordErr.innerHTML = 'Bitta belgidan foydalaning';
+      userpassword.style.borderColor = ' red';
+    } else if (!e.target.value.match(/[0-9]/)) {
+      userpasswordErr.innerHTML = 'Bitta raqatmdan foydalaning!';
+      userpassword.style.borderColor = ' red';
     } else {
-      userpassword.style.borderColor = '#fff';
-      userpasswordErr.innerHTML = '';
+      userpasswordErr.innerHTML = `To'g'ri foydalandingiz!`;
+      userpasswordErr.classList.add('isvalid1');
+      userpassword.style.borderColor = 'rgb(227, 227, 227)';
     }
-  } catch (e) {
-    console.log(e);
+  } else {
+    userpasswordErr.innerHTML = 'parol uzunligi 6 dan katta bolsin';
   }
 });
-
-let intiger = false;
-let symbol = false;
-let upper = false;
-let lower = false;
-let allowed_symbols = '!@#$%^&*()_+-{}:";\'`<>,.?/|.';
-
-function parolniTekshir(el) {
-  const split_password = el.split('');
-
-  for (let el1 of split_password) {
-    console.log('inside forEach');
-    if (!Number.isNaN(+el1)) {
-      intiger = true;
-    } else if (allowed_symbols.includes(el1)) {
-      symbol = true;
-    } else if (el1.toUpperCase() == el1) {
-      upper = true;
-    } else if (el1.toLowerCase() == el1) {
-      lower = true;
-    } else {
-    }
-  }
-
-  validateEl();
-}
-
-function validateEl() {
-  if (!intiger) {
-    userpasswordErr.innerHTML = `Raqamdan foydalaning`;
-    userpassword.style.borderColor = 'red';
-  } else if (!symbol) {
-    userpasswordErr.innerHTML = `Symbollardan foydalaning`;
-    userpassword.style.borderColor = 'red';
-  } else if (!upper) {
-    userpasswordErr.innerHTML = `Katta harflardan foydalaning`;
-    userpassword.style.borderColor = 'red';
-  } else if (!lower) {
-    userpasswordErr.innerHTML = `Kichik harflardan foydalaning`;
-    userpassword.style.borderColor = 'red';
-  } else {
-    userpasswordErr.innerHTML = "<span> To'g'ri foydalandingiz! </span>";
-    userpassword.style.borderColor = 'blue';
-    lower = false;
-    symbol = false;
-    intiger = false;
-    upper = false;
-  }
-}
 
 // repeat password
 const userpassword2 = document.querySelector('#userpassword2');
@@ -124,33 +84,31 @@ const usersurname = document.querySelector('#usersurname');
 
 function submitted(e) {
   e.preventDefault();
-  if (username.value == '') {
-    alert('ismingizni kiriting');
+  if (username.value.length == 0) {
     username.style.borderColor = ' red';
-  } else if (username.value !== '') {
+  } else {
     username.style.borderColor = 'rgb(227, 227, 227)';
   }
-  if (usersurname.value == '') {
-    console.log('ads');
-    alert('Familiangizni kiriting');
+  if (usersurname.value.length == 0) {
     usersurname.style.borderColor = ' red';
-  } else if (usersurname.value !== '') {
+  } else {
     usersurname.style.borderColor = 'rgb(227, 227, 227)';
   }
 
-  if (userEmail.value == '') {
-    console.log('ads');
-    alert('Emailingizni kiriting');
+  if (userEmail.value.length == 0) {
     userEmail.style.borderColor = ' red';
-  } else if (userEmail.value !== '') {
+  } else {
     userEmail.style.borderColor = 'rgb(227, 227, 227)';
   }
+  if (userEmail.value.length == 0) {
+    userpassword2.style.borderColor = ' red';
+  } else {
+    userpassword2.style.borderColor = 'rgb(227, 227, 227)';
+  }
 
-  if (userpassword.value == '') {
-    console.log('ads');
-    alert('parol kiriting');
+  if (userpassword.value.length == 0) {
     userpassword.style.borderColor = ' red';
-  } else if (userpassword.value !== '') {
+  } else {
     userpassword.style.borderColor = 'rgb(227, 227, 227)';
   }
 }

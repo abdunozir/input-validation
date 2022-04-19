@@ -102,7 +102,10 @@ input:focus {
 }
 /* checking inputs value */
 .isvalid {
-  border-color: #129ceb;
+  border-color: #129ceb !important;
+}
+.isvalid1 {
+  color: #129ceb !important;
 }
 
 .isinvalid {
